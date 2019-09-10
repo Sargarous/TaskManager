@@ -3,18 +3,18 @@
 Смотрите тут https://ant.apache.org/manual/
 -->
 
-<project name="Ant to KRUGLENJA" default="10deploy" basedir="../../../../../JD2018-11-13/src/by/it/kruglenja">
+<project name="Ant to KRUGLENJA" default="10deploy" basedir="../../../../../TaskManager/src/org/Project">
 
     <!-- подключаем файл с настройками -->
-    <property file="deploy.properties"/>
+    <property file="ant/deploy.properties"/>
 
     <!-- описываем classpath для копилятора -->
     <!-- каждый jar нужно описать отдельно (!),
          компилятор считает, что это как бы отдельный каталог -->
     <path id="classpath">
-        <fileset dir="../lib-local" includes="jstl-1.2.jar"/>
-        <fileset dir="../lib-local" includes="mysql-connector-java.jar"/>
-        <fileset dir="../../../../../JD2018-11-13/lib" includes="servlet-api.jar"/>
+        <fileset dir="lib-local" includes="jstl-1.2.jar"/>
+        <fileset dir="lib-local" includes="mysql-connector-java.jar"/>
+        <fileset dir="../../../../TaskManager/lib" includes="servlet-api.jar"/>
     </path>
 
     <!-- начинаем выполнять шаги (т.е. цели). -->

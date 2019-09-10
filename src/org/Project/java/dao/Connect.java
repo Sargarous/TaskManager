@@ -35,7 +35,7 @@ class Connect {
     }
 
     static void deleteDb() {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/", "root", "")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/", "root", "")) {
             Statement statement = connection.createStatement();
             statement.executeUpdate("DROP SCHEMA IF EXISTS `TaskManager` ;");
         } catch (SQLException e) {
@@ -44,7 +44,7 @@ class Connect {
     }
 
     static void createDb() {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/", "root", "")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/", "root", "")) {
             Statement statement = connection.createStatement();
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `TaskManager` DEFAULT CHARACTER SET utf8 ;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `TaskManager`.`Roles` (" +

@@ -21,9 +21,9 @@ USE `TaskManager` ;
 DROP TABLE IF EXISTS `TaskManager`.`Roles` ;
 
 CREATE TABLE IF NOT EXISTS `TaskManager`.`Roles` (
-  `roleId` INT NOT NULL,
+  `id` INT NOT NULL,
   `roleName` VARCHAR(45) NULL,
-  PRIMARY KEY (`roleId`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -33,24 +33,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TaskManager`.`Users` ;
 
 CREATE TABLE IF NOT EXISTS `TaskManager`.`Users` (
-  `userId` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `userName` VARCHAR(45) NULL,
   `userPassword` VARCHAR(45) NULL,
   `userEmail` VARCHAR(45) NULL,
-  `Roles_roleId` INT NOT NULL,
-  PRIMARY KEY (`userId`, `Roles_roleId`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `TaskManager`.`Priority`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `TaskManager`.`Priority` ;
-
-CREATE TABLE IF NOT EXISTS `TaskManager`.`Priority` (
-  `priorityId` INT NOT NULL AUTO_INCREMENT,
-  `priorityName` VARCHAR(45) NULL,
-  PRIMARY KEY (`priorityId`))
+  `Roles_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `Roles_id`))
 ENGINE = InnoDB;
 
 
@@ -60,14 +48,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TaskManager`.`ProjectList` ;
 
 CREATE TABLE IF NOT EXISTS `TaskManager`.`ProjectList` (
-  `projectId` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `projectSrart` TIMESTAMP NULL,
   `projectRedLine` TIMESTAMP NULL,
   `projectDeadLine` TIMESTAMP NULL,
   `projectTimeLeft` TIMESTAMP NULL,
-  `Users_userId` INT UNSIGNED NOT NULL,
-  `Priority_priorityId` INT NOT NULL,
-  PRIMARY KEY (`projectId`, `Priority_priorityId`, `Users_userId`))
+  `Users_id` INT UNSIGNED NOT NULL,
+  `Users_Roles_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `Users_id`, `Users_Roles_id`))
 ENGINE = InnoDB;
 
 
@@ -77,7 +65,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TaskManager`.`Tasks` ;
 
 CREATE TABLE IF NOT EXISTS `TaskManager`.`Tasks` (
-  `taskId` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `taskName` VARCHAR(195) NULL,
   `taskDescription` VARCHAR(255) NULL,
   `taskStartTime` TIMESTAMP NULL,
@@ -85,10 +73,13 @@ CREATE TABLE IF NOT EXISTS `TaskManager`.`Tasks` (
   `taskDeadLine` TIMESTAMP NULL,
   `taskTimeLeftToRedLine` TIMESTAMP NULL,
   `taskTimeLeftToDeadLine` VARCHAR(45) NULL,
-  `Priority_priorityId` INT NOT NULL,
-  `Users_userId` INT UNSIGNED NOT NULL,
-  `Users_Roles_roleId` INT NOT NULL,
-  PRIMARY KEY (`taskId`, `Priority_priorityId`, `Users_userId`, `Users_Roles_roleId`))
+
+  `ProjectList_id` INT UNSIGNED NOT NULL,
+  `ProjectList_Users_id` INT UNSIGNED NOT NULL,
+  `ProjectList_Users_Roles_id` INT NOT NULL,
+  `Users_id` INT UNSIGNED NOT NULL,
+  `Users_Roles_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `ProjectList_id`, `ProjectList_Users_id`, `ProjectList_Users_Roles_id`, `Users_id`, `Users_Roles_id`))
 ENGINE = InnoDB;
 
 
@@ -97,21 +88,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `TaskManager`;
-INSERT INTO `TaskManager`.`Roles` (`roleId`, `roleName`) VALUES (1, 'user');
-INSERT INTO `TaskManager`.`Roles` (`roleId`, `roleName`) VALUES (2, 'guest');
-INSERT INTO `TaskManager`.`Roles` (`roleId`, `roleName`) VALUES (3, 'admin');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `TaskManager`.`Priority`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `TaskManager`;
-INSERT INTO `TaskManager`.`Priority` (`priorityId`, `priorityName`) VALUES (1, 'hi');
-INSERT INTO `TaskManager`.`Priority` (`priorityId`, `priorityName`) VALUES (2, 'medium');
-INSERT INTO `TaskManager`.`Priority` (`priorityId`, `priorityName`) VALUES (3, 'low');
+INSERT INTO `TaskManager`.`Roles` (`id`, `roleName`) VALUES (1, 'user');
+INSERT INTO `TaskManager`.`Roles` (`id`, `roleName`) VALUES (2, 'guest');
+INSERT INTO `TaskManager`.`Roles` (`id`, `roleName`) VALUES (3, 'admin');
 
 COMMIT;
 

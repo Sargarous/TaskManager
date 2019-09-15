@@ -1,9 +1,11 @@
-public class Tasks{
+package by.it.kruglenja.TaskManager.java.beans;
+
+public class Task{
 
     private long id;
     private String taskName;
     private String taskDescription;
-    private String taskStrat;
+    private String taskStartTime;
     private String taskRedLine;
     private String taskDeadLine;
 
@@ -13,14 +15,14 @@ public class Tasks{
     private long Users_id;
     private long Users_Roles_id;
 
-    public Tasks() {
+    public Task() {
     }
 
-    public Tasks(long id, String taskName, String taskDescription, String taskStrat, String taskRedLine, String taskDeadLine, long projectList_id, long projectList_Users_id, long project_Users_Roles_id, long users_id, long users_Roles_id) {
+    public Task(long id, String taskName, String taskDescription, String taskStartTime, String taskRedLine, String taskDeadLine, long projectList_id, long projectList_Users_id, long project_Users_Roles_id, long users_id, long users_Roles_id) {
         this.id = id;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
-        this.taskStrat = taskStrat;
+        this.taskStartTime = taskStartTime;
         this.taskRedLine = taskRedLine;
         this.taskDeadLine = taskDeadLine;
         ProjectList_id = projectList_id;
@@ -54,12 +56,12 @@ public class Tasks{
         this.taskDescription = taskDescription;
     }
 
-    public String getTaskStrat() {
-        return taskStrat;
+    public String getTaskStratTime() {
+        return taskStartTime;
     }
 
-    public void setTaskStrat(String taskStrat) {
-        this.taskStrat = taskStrat;
+    public void settaskStartTime(String taskStartTime) {
+        this.taskStartTime = taskStartTime;
     }
 
     public String getTaskRedLine() {
@@ -119,12 +121,12 @@ public class Tasks{
     }
 
     @Override
-    public java.lang.String toString() {
+    public String toString() {
         return "Tasks{" +
                 "id=" + id +
                 ", taskName='" + taskName + '\'' +
                 ", taskDescription='" + taskDescription + '\'' +
-                ", taskStrat='" + taskStrat + '\'' +
+                ", taskStartTime='" + taskStartTime + '\'' +
                 ", taskRedLine='" + taskRedLine + '\'' +
                 ", taskDeadLine='" + taskDeadLine + '\'' +
                 ", ProjectList_id=" + ProjectList_id +

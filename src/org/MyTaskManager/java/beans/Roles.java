@@ -1,4 +1,6 @@
-public class Role{
+package by.it.kruglenja.TaskManager.java.beans;
+
+public class Roles{
 
     private long id;
     private String roleName;
@@ -27,8 +29,8 @@ public class Role{
         this.roleName = roleName;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Roles{" +
                 "id=" + id +
                 ", roleName='" + roleName + '\'' +

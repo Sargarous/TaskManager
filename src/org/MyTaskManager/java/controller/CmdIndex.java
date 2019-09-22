@@ -9,6 +9,7 @@ import java.util.List;
 public class CmdIndex implements Cmd{
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
+        req.getSession().setAttribute("message", "");
 
         if (Form.isPost(req)) {
             String login = Form.getString(req, "login");
@@ -24,7 +25,7 @@ public class CmdIndex implements Cmd{
                 return Action.TASKPAGE;
             }else {
                 String message = "";
-                req.getSession().setAttribute("Wrong username or incorrect password", message);
+                req.setAttribute("Wrong username or incorrect password", message);
             }
         }
         return Action.INDEX;

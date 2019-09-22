@@ -5,8 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 public enum  Action {
 
     INDEX(new CmdIndex()),
-    SIGNIN(new CmdSignUP()),
-    TASKPAGE(new CmdTaskPage());
+    SIGNIN(new CmdSignUp()),
+    TASKPAGE(new CmdTaskPage()),
+    TASKCREATE(new CmdTaskCreate()),
+    SIGNUP(new CmdSignUp());
 
     Cmd cmd;
     Action(Cmd cmdIndex) {this.cmd = cmdIndex;}

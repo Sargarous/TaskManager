@@ -5,46 +5,51 @@
 
 <body>
 <div class="page-header">
+
+    <p>user: <br> ${user}</p>
     <p>sessionUserId: <br> ${sessionUserId}</p>
-    <p>sql: <br> ${sql}</p>
 </div>
 <div class="container">
 
-        <form class="form-horizontal" action="do?command=Index" method="post">
-            <fieldset>
+    <form class="form-horizontal" action="do?command=Index" method="post">
+        <fieldset>
 
-                <!-- Form Name -->
-                <legend>Login</legend>
+            <!-- Form Name -->
+            <legend>Login</legend>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="login">Login</label>
-                    <div class="col-md-4">
-                        <input id="login" value="123" name="login" type="text" placeholder="" class="form-control input-md">
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="login">Login</label>
+                <div class="col-md-4">
+                    <input id="login" value="123" name="login" type="text" placeholder="" class="form-control input-md">
 
-                    </div>
                 </div>
-                <!-- userPassword input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="userPassword">Password</label>
-                    <div class="col-md-4">
-                        <input id="userPassword" value="12345" name="userPassword" type="userPassword" placeholder=""
-                        class="form-control input-md">
+            </div>
+            <!-- userPassword input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="userPassword">Password</label>
+                <div class="col-md-4">
+                    <input id="userPassword" value="12345" name="userPassword" type="userPassword" placeholder=""
+                           class="form-control input-md">
 
-                    </div>
                 </div>
+            </div>
 
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="SignIn"></label>
-                    <div class="col-md-4">
-                        <button id="SignIn" name="SignIn" class="btn btn-success">SignIn</button>
-                    </div>
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="SignIn"></label>
+                <div class="col-md-4">
+                    <button id="SignIn" name="SignIn" class="btn btn-success">SignIn</button>
                 </div>
-            </fieldset>
-            <p><br> ${message}</p>
-        </form>
+            </div>
+            <a class="btn btn-success" href="do?command=SignUp">SignUp</a>
+<%--            --%>
+        </fieldset>
+    </form>
+
+
+    <p><br> ${message}</p>
 
 </div>
 </body>

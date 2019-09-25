@@ -1,11 +1,17 @@
 package by.it.kruglenja.TaskManager.java.beans;
 
+import javafx.util.converter.DateTimeStringConverter;
+
 public class Task{
 
     private long id;
     private String taskName;
     private String taskDescription;
     private String taskStartTime;
+    private DateTimeStringConverter dateTimeStringConverter = new DateTimeStringConverter();
+
+    public void setDateTimeStringConverter(DateTimeStringConverter dateTimeStringConverter) { this.dateTimeStringConverter = taskStartTime; }
+
     private String taskRedLine;
     private String taskDeadLine;
 
@@ -56,7 +62,7 @@ public class Task{
         this.taskDescription = taskDescription;
     }
 
-    public String getTaskStratTime() {
+    public String getTaskStartTime() {
         return taskStartTime;
     }
 

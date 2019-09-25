@@ -10,7 +10,7 @@ public class Ruiner {
     public static void main(String[] args) throws SQLException {
         Locale.setDefault(new Locale("en", "US"));
         //User dao
-        Dao dao = Dao.getDao();
+//        Dao dao = Dao.getDao().getDao();
         User user = new User();
         Task task = new Task();
 
@@ -20,23 +20,23 @@ public class Ruiner {
         user.setRoles_id(1);
         System.out.println("+-+-+-+-+-+-+-+Users AHAB dao+-+-+-+-+-+-+-+");
 
-        if (dao.user.create(user)) {
+        if (Dao.getDao().user.create(user)) {
             System.out.println("create -------->" + user);
             System.out.println(" try change login to XXX-------->" + user);
         }
         user.setlogin("XXX");
         user.setRoles_id(3);
-        if (dao.user.update(user)) {
-            System.out.println("Updated " + dao.user.getAll());
+        if (Dao.getDao().user.update(user)) {
+            System.out.println("Updated " + Dao.getDao().user.getAll());
         }
         user.setId(1);
-        if (dao.user.delete(user))
-//        if (dao.user.delete(user)) {
+        if (Dao.getDao().user.delete(user))
+//        if (Dao.getDao().user.delete(user)) {
 //            System.out.println("user -------->" + user.getLogin() + "--------> deleted");
 //        }
             System.out.println("<_USER GET ALL_>");
         List<User> all1;
-        all1 = dao.user.getAll();
+        all1 = Dao.getDao().user.getAll();
         for (User s : all1) {
             System.out.println(s);
         }
@@ -50,25 +50,25 @@ public class Ruiner {
         task.setTaskDeadLine("22:00");
         task.setUsers_id(2);
         task.setUsers_Roles_id(user.getRoles_id());
-        if (dao.task.create(task))
+        if (Dao.getDao().task.create(task))
             System.out.println("create task created" );
         task.setId(2);
-        if (dao.task.delete(task))
+        if (Dao.getDao().task.delete(task))
             System.out.println("task id 2 deleted");
         List<Task> tasks;
-        tasks = dao.task.getAll();
+        tasks = Dao.getDao().task.getAll();
         for (Task s : tasks) {
-            System.out.println(s);
+            System.out.println("getall " + s);
+        }
+        long userId = 2;
+        System.out.println("-------------------------------");
+        List<Task> task1 = Dao.getDao().task.getAll(String.format(" WHERE `Users_id`='%d'", userId));
+        for (Task c : task1) {
+            System.out.println("All tasks from uers" + userId + c);
         }
 
-        Task task1 = dao.task.read(3);
-        System.out.println(task1 + "tsr");
-        task1.setTaskName(" id 3 rebuild");
-        task1.setTaskDescription("Description for Task 3");
 
-        System.out.println(task1.toString() + "to string");
-        if (dao.task.update(task1))
-            System.out.println("task with id 3 rebuilded");
+
 
         System.out.println("\n" + "+-+-+-+-+-+-+-+ dao+-+-+-+-+-+-+-+");
 

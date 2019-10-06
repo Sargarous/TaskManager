@@ -1,7 +1,0 @@
-import javax.servlet.*;
-import java.io.IOException;
-
-public class filterEcoding implements Filter{
-    private String encode = null;
-
-}

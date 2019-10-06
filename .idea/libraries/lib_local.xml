@@ -5,9 +5,7 @@
         <item url="file://$PROJECT_DIR$/src/org/MyTaskManager/lib-local" />
       </sourceFilesUrls>
     </properties>
-    <CLASSES>
-      <root url="file://$PROJECT_DIR$/src/org/MyTaskManager/lib-local" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>
